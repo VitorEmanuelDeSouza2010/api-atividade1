@@ -1,0 +1,45 @@
+import { useState, useEffect } from 'react'
+import s from './App.module.css'
+import { api } from './api/api'
+import { Card } from './components/card'
+
+function App() {
+const [data, setData] = useState([])
+  const [searchName, setSearchName] = useState("")
+  const [searchPage, setSearchPage] = useState("")
+
+  useEffect(() => {
+    api.get(`/character/?name=${searchName}&page=${searchPage}`).then((response) => {
+      setData(response.data.content)
+    }).catch((error) => {
+      console.error("NÃO FOI POSSÍVEL ACESSAR API", error)
+    })
+  }, [searchPage, searchName])
+
+  return (
+    <>
+      <h1 className={s.title}>Demon Slayer API</h1>
+      <main>
+        <div style={{display: "flex", gap: "10px", alignItems: "center", justifyContent: "center"}}>
+        <input type="text" value={searchPage} onChange={(e) => setSearchPage(e.target.value)} placeholder='1/42'/>
+        <input type="text" value={searchName} onChange={(e) => setSearchName(e.target.value)} place='Procure um personagem'/>
+        </div>
+
+
+        <div className={s.wrapCards}>
+          {data.map((item, index) => {
+            return(
+              <div key={index} style={{display: "flex", flexWrap: "wrap", alignItems: "center", justifyContent: "center"}}>
+                  <Card image={item.img} name={item.name} species={item.race} />
+              </div>
+            )
+          })}
+
+        </div>
+
+      </main>
+    </>
+  )
+}
+
+export default App
