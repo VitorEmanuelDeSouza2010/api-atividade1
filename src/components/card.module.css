@@ -1,6 +1,6 @@
 .cardBackground{
-    background-color: rgb(37, 2, 70);
-    color: #ffffff;
+    background-color: rgb(0, 0, 0);
+    color: #ffe59c;
     padding: 10px;
     border-radius: 10px;
     display: flex;
@@ -12,18 +12,12 @@
     height: 450px;
 }
 
-.cardBaground{
-    border-radius: 999px;
-    transition: all 200px ease-in-out;
-    filter: grayscale(1);
-    width: 90%;
-}
 
 .cardImage{
     border-radius: 999px;
     transition: all 200ms ease-in-out;
     filter: grayscale(1);
-    width: 90%;
+    width: 55%;
 }
 
 .cardBackground:hover .cardImage{
@@ -32,14 +26,14 @@
 }
 
 .cardBackground:hover{
-   box-shadow: rgba(46, 240, 127, 0.4) -5px 5px, rgba(46, 240, 127, 0.3) -10px 10px, rgba(46, 240, 127, 0.2) -15px 15px, rgba(46, 240, 127, 0.1) -20px 20px, rgba(46, 240, 127, 0.05) -25px 25px;
+   box-shadow: rgba(240, 211, 46, 0.4) -5px 5px, rgba(240, 211, 46, 0.3) -10px 10px, rgba(240, 211, 46, 0.2) -15px 15px, rgba(240, 211, 46, 0.1) -20px 20px, rgba(240, 211, 46, 0.05) -25px 25px;
 }
 
 .cardTitle{
     font-size: 2rem;
     letter-spacing: 2px;
     font-weight: 900;
-    text-shadow: 0px 3px 20px #f300fb;
+    text-shadow: 0px 3px 20px #fbc000;
     width: 100%;
     text-align: center;
 }
@@ -47,6 +41,6 @@
 .cardText{
     width: 100%;
     text-align: center;
-    color: #fa81ea;
+    color: #fae481;
     font-size: 22px;
 }

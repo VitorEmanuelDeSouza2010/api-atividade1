@@ -5,24 +5,22 @@ import { Card } from './components/card'
 
 function App() {
 const [data, setData] = useState([])
-  const [searchName, setSearchName] = useState("")
-  const [searchPage, setSearchPage] = useState("")
+
 
   useEffect(() => {
-    api.get(`/character/?name=${searchName}&page=${searchPage}`).then((response) => {
-      setData(response.data.content)
+    api.get(`/characters/students`).then((response) => {
+      setData(response.data)
+      console.log(response.data)
     }).catch((error) => {
       console.error("NÃO FOI POSSÍVEL ACESSAR API", error)
     })
-  }, [searchPage, searchName])
+  }, [])
 
   return (
     <>
-      <h1 className={s.title}>Demon Slayer API</h1>
+      <h1 className={s.title}>Harry Potter API</h1>
       <main>
         <div style={{display: "flex", gap: "10px", alignItems: "center", justifyContent: "center"}}>
-        <input type="text" value={searchPage} onChange={(e) => setSearchPage(e.target.value)} placeholder='1/42'/>
-        <input type="text" value={searchName} onChange={(e) => setSearchName(e.target.value)} place='Procure um personagem'/>
         </div>
 
 
@@ -30,7 +28,7 @@ const [data, setData] = useState([])
           {data.map((item, index) => {
             return(
               <div key={index} style={{display: "flex", flexWrap: "wrap", alignItems: "center", justifyContent: "center"}}>
-                  <Card image={item.img} name={item.name} species={item.race} />
+                  <Card image={item.image} name={item.name} race={item.race} gender={item.gender} />
               </div>
             )
           })}
